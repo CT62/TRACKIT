@@ -23,8 +23,8 @@ reactRoot.render(
       <Navbar />
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="login" element={<Login />} />
-	<Route path="signup" element={<Signup />} />
+        <Route path="accounts/login" element={<Login />} />
+	<Route path="accounts/signup" element={<Signup />} />
       </Routes>
       </div>
     </BrowserRouter>

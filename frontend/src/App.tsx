@@ -1,17 +1,24 @@
-import { motion } from 'framer-motion';
-import Jumbotron from './components/Jumbotron.tsx';
-import AboutSection from './components/About.tsx';
-import { useNavigate } from 'react-router-dom';
-import AutoScrollGallery from './components/AutoScrollGallery.tsx';
-import './index.css'; // TailwindCSS assumed configured
+import { useState,useEffect } from 'react';
+import LoadingScreen from './components/LoadingScreen';
+import { AnimatePresence } from 'framer-motion';
+import Jumbotron from './components/Jumbotron';
+import AboutSection from './components/About';
+import Features from './components/Features';
+import Testonials from './components/Testimonials';
+import AutoScrollGallery from './components/AutoScrollGallery';
+import Footer from './components/Footer.tsx'
 
-export default function App() {
- return (
-	  <>
-      <Jumbotron />
-      <AutoScrollGallery />
-      <AboutSection />
-
-	  </>
+function App() {
+  return (
+    <>
+          <Jumbotron />
+          <AutoScrollGallery />
+          <AboutSection />
+	  <Features />
+	  <Footer />
+    </>
   );
 }
+
+export default App;
+

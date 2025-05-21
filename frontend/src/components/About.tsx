@@ -1,4 +1,4 @@
-import { BoltIcon, ChartBarIcon, MoonIcon } from '@heroicons/react/24/solid';
+import { BoltIcon, ChartBarIcon, FaceSmileIcon } from '@heroicons/react/24/solid';
 
 const AboutSection = () => {
 	return (
@@ -12,16 +12,14 @@ const AboutSection = () => {
 				</p>
 
 				<div className="grid md:grid-cols-3 gap-8 text-left">
-					{/* Fast & Lightweight */}
 					<div className="flex items-start gap-4">
 						<BoltIcon className="w-6 h-6 text-black dark:text-white mt-1" />
 						<div>
-							<h3 className="text-xl font-semibold text-black dark:text-white mb-1">Fast & Lightweight</h3>
+							<h3 className="text-xl font-semibold text-black dark:text-white mb-1">Fast & Convenient</h3>
 							<p className="text-gray-600 dark:text-gray-400">No clutter. Just the essentials for quick logging and tracking.</p>
 						</div>
 					</div>
 
-					{/* Smart Analytics */}
 					<div className="flex items-start gap-4">
 						<ChartBarIcon className="w-6 h-6 text-black dark:text-white mt-1" />
 						<div>
@@ -30,12 +28,11 @@ const AboutSection = () => {
 						</div>
 					</div>
 
-					{/* Dark Mode Ready */}
 					<div className="flex items-start gap-4">
-						<MoonIcon className="w-6 h-6 text-black dark:text-white mt-1" />
+						<FaceSmileIcon className="w-6 h-6 text-black dark:text-white mt-1" />
 						<div>
-							<h3 className="text-xl font-semibold text-black dark:text-white mb-1">Dark Mode Ready</h3>
-							<p className="text-gray-600 dark:text-gray-400">Looks beautiful no matter your theme. Your eyes will thank you.</p>
+							<h3 className="text-xl font-semibold text-black dark:text-white mb-1">Eat better and hit your macro goals</h3>
+							<p className="text-gray-600 dark:text-gray-400">Learn which foods help you reach your goals.</p>
 						</div>
 					</div>
 				</div>
