@@ -5,6 +5,8 @@ import toast from 'react-hot-toast';
 export default function Signup() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = useState('');
 
   async function Authenticate(e: React.FormEvent) {
     e.preventDefault();
@@ -18,7 +20,7 @@ export default function Signup() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password, last_name: lastName, first_name: firstName }),
       });
       const data = await response.json();
       if (response.ok) {
@@ -46,6 +48,25 @@ export default function Signup() {
             Sign Uplink to continue
           </span>
         </div>
+	<div className="flex gap-3">
+        <input
+          type="text"
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          className="w-full h-11 rounded-md border border-zinc-700 bg-zinc-800 text-sm text-white px-3 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-white transition"
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          className="w-full h-11 rounded-md border border-zinc-700 bg-zinc-800 text-sm text-white px-3 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-white transition"
+        />
+
+
+	</div>
+
         <input
           type="text"
           placeholder="Username"

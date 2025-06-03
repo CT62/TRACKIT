@@ -77,7 +77,6 @@ const Navbar = () => {
             )}
           </button>
 
-          {token && (
             <div className="relative">
               <button
                 onClick={() => setAccountDropdownOpen(!accountDropdownOpen)}
@@ -88,7 +87,9 @@ const Navbar = () => {
 
               {accountDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-zinc-800 rounded-md shadow-lg py-1 z-50 border border-gray-200 dark:border-gray-700">
-                  <a
+		{token ? (
+		<>
+                 <a
                     href="/account"
                     className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-700"
                   >
@@ -100,10 +101,23 @@ const Navbar = () => {
                   >
                     Logout
                   </button>
+		  </>
+		):(
+		<>
+                 <a
+	         	href="/accounts/login"
+			className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-700"
+		 >Login</a>
+		 <a
+	         	href="/accounts/signup"
+			className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-700"
+		 >Sign up</a>
+
+		 </>
+		)}
                 </div>
               )}
             </div>
-          )}
         </div>
       </div>
 

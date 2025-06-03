@@ -10,7 +10,7 @@ const Jumbotron = () => {
     if (token) {
       navigate('/home');
     } else {
-      navigate('/signup');
+      navigate('/accounts/signup');
     }
   };
  
