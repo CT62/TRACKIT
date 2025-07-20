@@ -1,3 +1,4 @@
+import json
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -49,3 +50,8 @@ class FoodLogDetail(generics.RetrieveUpdateAPIView):
         user = self.request.user
         return Note.objects.filter(author=user)
 
+@api_view(['GET'])
+def me(request):
+    print(request.user)
+    serializer = UserSerializer
+    permission_classes = [IsAuthenticated]

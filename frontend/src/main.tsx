@@ -9,6 +9,8 @@ import Signup from './routes/Signup'
 import Navbar from './components/Navbar.tsx'
 import Jumbotron from './components/Jumbotron.tsx'
 import AboutSection from './components/About.tsx'
+import Account from './routes/Account.tsx'
+
 
 
 const root = document.getElementById('root');
@@ -25,6 +27,7 @@ reactRoot.render(
         <Route path="/" element={<App />} />
         <Route path="accounts/login" element={<Login />} />
 	<Route path="accounts/signup" element={<Signup />} />
+	<Route path="account" element={<Account />} />
       </Routes>
       </div>
     </BrowserRouter>
