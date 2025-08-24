@@ -7,8 +7,10 @@ import Features from './components/Features';
 import Testonials from './components/Testimonials';
 import AutoScrollGallery from './components/AutoScrollGallery';
 import Footer from './components/Footer.tsx'
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  
   return (
     <>
           <Jumbotron />

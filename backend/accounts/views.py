@@ -12,6 +12,22 @@ from rest_framework.views import APIView
 class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+
+        refresh = RefreshToken.for_user(user)
+        access_token = refresh.access_token
+        
+        return Response({
+            'user': UserSerializer(user).data,
+            'access': str(access_token),
+            'refresh': str(refresh),
+            'message': 'User created successfully'
+        }, status=status.HTTP_201_CREATED)
+
     def current_user(self):
         print(self.request.user)
 
@@ -19,13 +35,15 @@ class AuthCheckView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        serializer = UserSerializer(request.user)
+        print(serializer.data)
         return Response({
             "authenticated": True,
-            "username": request.user.username
+            "user": serializer.data
         })
 
 class FoodLogCreate(generics.CreateAPIView):
-    serializer_class = UserSerializer
+    serializer_class = FoodLogSerializer
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
@@ -49,9 +67,3 @@ class FoodLogDetail(generics.RetrieveUpdateAPIView):
     def get_queryset(self):
         user = self.request.user
         return Note.objects.filter(author=user)
-
-@api_view(['GET'])
-def me(request):
-    print(request.user)
-    serializer = UserSerializer
-    permission_classes = [IsAuthenticated]

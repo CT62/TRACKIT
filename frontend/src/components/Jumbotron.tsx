@@ -5,14 +5,9 @@ import { motion } from "framer-motion";
 const Jumbotron = () => {
   const navigate = useNavigate();
 
-  const handleGetStarted = () => {
-    const token = localStorage.getItem('access');
-    if (token) {
-      navigate('/home');
-    } else {
-      navigate('/accounts/signup');
-    }
-  };
+  if(localStorage.getItem("access")){
+	  navigate("/home")
+  }
  
   return (
     <div className="flex flex-col items-center justify-center pt-32 pb-24 bg-gray-50 dark:bg-black text-center px-4">
@@ -27,7 +22,7 @@ const Jumbotron = () => {
       <div className="mt-8 flex flex-col sm:flex-row gap-4">
         <button 
           className="px-6 py-3 bg-black text-white dark:bg-black dark:text-white border-2 border-white rounded-full transition-all duration-300 flex items-center gap-2"
-	  onClick={handleGetStarted}
+	  onClick={() => {navigate("/accounts/signup")}}
         >
           Get Started
           <ArrowRightIcon className="w-5 h-5" />

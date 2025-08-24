@@ -11,7 +11,7 @@ export default function Account() {
     }
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/accounts/me/', {
+      const res = await fetch('http://127.0.0.1:8000/accounts/user/', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -22,10 +22,9 @@ export default function Account() {
       if (!res.ok) {
         throw new Error(`HTTP error ${res.status}`);
       }
-
       const userData = await res.json();
       console.log(userData);
-      setUser(userData); // Save user data to state
+      setUser(userData);
     } catch (err: any) {
       console.error('Failed to fetch user:', err.message);
     }
@@ -41,9 +40,9 @@ export default function Account() {
         <h1 className="text-3xl font-bold">Account</h1>
         {user ? (
           <div className="mt-4 text-lg text-black">
-            <p><strong>Username:</strong> {user.username}</p>
-            <p><strong>First Name:</strong> {user.first_name}</p>
-            <p><strong>Last Name:</strong> {user.last_name}</p>
+            <p><strong>Username:</strong> {user.user.username}</p>
+            <p><strong>First Name:</strong> {user.user.first_name}</p>
+            <p><strong>Last Name:</strong> {user.user.last_name}</p>
           </div>
         ) : (
           <p className="mt-4 text-zinc-600">Loading user info...</p>
