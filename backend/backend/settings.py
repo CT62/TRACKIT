@@ -24,6 +24,8 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = "accounts.CustomUser"
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -62,6 +64,7 @@ INSTALLED_APPS = [
     "accounts",
     "rest_framework",
     "corsheaders",
+    "diary",
 ]
 
 MIDDLEWARE = [
