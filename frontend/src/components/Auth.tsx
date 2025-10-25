@@ -15,6 +15,10 @@ export default function Auth({ link, title }: Props) {
   const [password, setPassword] = useState('');
   const [lastName, setLastName] = useState('');
   const [firstName, setFirstName] = useState('');
+  const [age, setAge] = useState('');
+  const [weight, setWeight] = useState('');
+  const [goalWeight, setGoalWeight] = useState('');
+  const [goalCalories, setGoalCalories] = useState('');
 
   if (localStorage.getItem("access")){
 	    navigate("/home")
@@ -32,7 +36,7 @@ export default function Auth({ link, title }: Props) {
       const isLogin = link === "token";
       const body = isLogin
         ? { username, password }
-        : { username, password, first_name: firstName, last_name: lastName };
+        : { username, password, first_name: firstName, last_name: lastName, age, weight, goal_calories:goalCalories,goal_weight:goalWeight };
 
       const response = await fetch(`http://127.0.0.1:8000/accounts/${link}/`, {
         method: 'POST',
@@ -105,6 +109,35 @@ export default function Auth({ link, title }: Props) {
           onChange={(e) => setPassword(e.target.value)}
           className="w-full h-11 rounded-md border border-zinc-700 bg-gray-100 dark:bg-zinc-700 text-sm text-black dark:text-white px-3 placeholder:text-zinc-400 dark:placeholder:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-white transition"
         />
+        <input
+          type="text"
+          placeholder="age"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+          className="w-full h-11 rounded-md border border-zinc-700 bg-gray-100 dark:bg-zinc-700 text-sm text-black dark:text-white px-3 placeholder:text-zinc-400 dark:placeholder:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-white transition"
+        />
+        <input
+          type="text"
+          placeholder="weight"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          className="w-full h-11 rounded-md border border-zinc-700 bg-gray-100 dark:bg-zinc-700 text-sm text-black dark:text-white px-3 placeholder:text-zinc-400 dark:placeholder:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-white transition"
+        />
+        <input
+          type="text"
+          placeholder="Goal Weight"
+          value={goalWeight}
+          onChange={(e) => setGoalWeight(e.target.value)}
+          className="w-full h-11 rounded-md border border-zinc-700 bg-gray-100 dark:bg-zinc-700 text-sm text-black dark:text-white px-3 placeholder:text-zinc-400 dark:placeholder:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-white transition"
+        />
+        <input
+          type="text"
+          placeholder="Goal Calories"
+          value={goalCalories}
+          onChange={(e) => setGoalCalories(e.target.value)}
+          className="w-full h-11 rounded-md border border-zinc-700 bg-gray-100 dark:bg-zinc-700 text-sm text-black dark:text-white px-3 placeholder:text-zinc-400 dark:placeholder:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-white transition"
+        />
+
         <button
           type="submit"
           className="mt-6 w-full h-11 rounded-md bg-gray-300 dark:bg-zinc-600 text-black dark:text-white font-semibold hover:shadow-[0_0_10px_2px_white] hover:-translate-y-1 transition-all"
